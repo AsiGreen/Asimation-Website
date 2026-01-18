@@ -4,27 +4,157 @@
     box-sizing: border-box;
 }
 
-:root {
-    --primary-color: #2ecc71;
-    --secondary-color: #27ae60;
-    --accent-color: #2ecc71;
-    --text-dark: #000000;
-    --text-light: #666666;
-    --bg-light: #ffffff;
-    --bg-dark: #000000;
-    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    --green-glow: 0 0 20px rgba(46, 204, 113, 0.3);
-}
-
 body {
     font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    color: var(--text-dark);
-    overflow-x: hidden;
     background: #000000;
+    color: #ffffff;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Custom Cursor */
+/* Floating Particles Background */
+.floating-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Center Content */
+.center-content {
+    text-align: center;
+    z-index: 1;
+    position: relative;
+}
+
+/* Logo Container */
+.logo-container {
+    margin-bottom: 2rem;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Main Logo */
+.main-logo {
+    width: 150px;
+    height: 150px;
+    filter: drop-shadow(0 0 30px rgba(46, 204, 113, 0.5));
+    animation: rotate 20s linear infinite, pulse 4s ease-in-out infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 30px rgba(46, 204, 113, 0.5));
+    }
+    50% {
+        filter: drop-shadow(0 0 50px rgba(46, 204, 113, 0.8));
+    }
+}
+
+/* Brand Name */
+.brand-name {
+    font-size: 4rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    animation: fadeInScale 2s ease-out;
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Tagline */
+.tagline {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #2ecc71;
+    letter-spacing: 0.3em;
+    text-transform: lowercase;
+    animation: fadeIn 3s ease-out, glow 3s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(46, 204, 113, 0.8), 0 0 30px rgba(46, 204, 113, 0.6);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-logo {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .brand-name {
+        font-size: 2.5rem;
+    }
+    
+    .tagline {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-logo {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .brand-name {
+        font-size: 2rem;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+    }
+}
+
+/* Old styles to remove */
 .cursor {
     width: 20px;
     height: 20px;
